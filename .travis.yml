@@ -28,6 +28,6 @@ deploy:
     secure: XnhfNPUUTLaIXDSGs8psSHR5PQy1ZC/PrT3Gd9clK2nAbgvGSETHIyc//ZRWdSYPQYyr2Hz5DvCH4Bb2TXOAYyufaQgsPS5UuLRStyJPFOQaF7JJBD5qXkKfcpTRrnUiIXz6wA+ufUi/LaEmt+fjHRSyDH8o7h1Q0GUQSSWe6w9nihuqXcezPoQbjDzbq6NWSg2rVnJ4tcoc/xDwDzE2cZmnlOX3LXf1cLwu/RnMVFqakYbdZWD6s5XsK7YJ1unPu4qEZsG1bRsvmE7F/CCcbUEHBf3+8SrgG6isR6x+Tn6+wWg/oTVOjmMLr6RLQ9w0cD4w9RJdx0rrj6z0cOGgLti2d95ppIsF5N9RWxtoiIRKyqErfN0vRPZEhpqSx13QxpqBiW2hEikmMNBnpae83q4ZQsbO7IJlOi4sBxKAJhvflE0BlLuAYpga47g2+oQe4X9/c0HsitqYC7dG71iidO5Jl/2mT9WyrljPLSYSZQLMZyRxBM41X1XbfM4nFWObEfnnyP2SaC4Qof+1K670wYlA+0nNsS/gd2fIlcz+H0SqdGhaiUWxwbLagcEhOd6trgVrz87c/zx29ZgoLRji12wPeXthrB3YMEJ2BLaJljimJVyBfw7Ip1GCoxpO+CABYz8+f3vIuKy/RYsokcams9StmtV7dZNqf5djIRTW5RI=
   skip_cleanup: true
   file_glob: true
-  file: build/libmojoshader.*
+  file: build/libmojoshader*
   on:
     repo: infinitespace-studios/MojoShader
