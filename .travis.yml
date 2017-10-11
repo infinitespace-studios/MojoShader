@@ -16,12 +16,12 @@ script:
 - mkdir build
 - mkdir buildwin
 - cd build
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64"
-  .. ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64" .. ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake .. ; fi
 - make
 - cd ..
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./buildwin64 ; fi
+- ls build/
 deploy:
   provider: releases
   api_key:
