@@ -4,3 +4,4 @@ target=i686-w64-mingw32.static
 mxedir=/usr/lib/mxe/
 $mxedir/usr/bin/$target-cmake -DCMAKE_CXX_FLAGS="-fpermissive" ..
 make
+cp libmojoshader.dll ../build/libmojoshader.dll
