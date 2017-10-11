@@ -1,22 +1,32 @@
 language: csharp
+notifications:
+  email: false
 os:
- - osx
- - linux
+- osx
+- linux
 compiler:
-  - clang
-  - gcc
+- clang
+- gcc
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB ;
-    echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" | sudo tee -a /etc/apt/sources.list.d/mxeapt.list ;
-    sudo apt-get -yy update ;
-    sudo apt-get --assume-yes install mxe-i686-w64-mingw32.static-qt ;
-    fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-key adv --keyserver keyserver.ubuntu.com
+  --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB ; echo "deb http://pkg.mxe.cc/repos/apt/debian
+  wheezy main" | sudo tee -a /etc/apt/sources.list.d/mxeapt.list ; sudo apt-get -yy
+  update ; sudo apt-get --assume-yes install mxe-i686-w64-mingw32.static-qt ; fi
 script:
-  - mkdir build
-  - cd build
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64" .. ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake .. ; fi
-  - make
-  - cd ..
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./buildwin64 ; fi
+- mkdir build
+- cd build
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DCMAKE_OSX_ARCHITECTURES="i386;x86_64"
+  .. ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake .. ; fi
+- make
+- cd ..
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./buildwin64 ; fi
+deploy:
+  provider: releases
+  api_key:
+    secure: XnhfNPUUTLaIXDSGs8psSHR5PQy1ZC/PrT3Gd9clK2nAbgvGSETHIyc//ZRWdSYPQYyr2Hz5DvCH4Bb2TXOAYyufaQgsPS5UuLRStyJPFOQaF7JJBD5qXkKfcpTRrnUiIXz6wA+ufUi/LaEmt+fjHRSyDH8o7h1Q0GUQSSWe6w9nihuqXcezPoQbjDzbq6NWSg2rVnJ4tcoc/xDwDzE2cZmnlOX3LXf1cLwu/RnMVFqakYbdZWD6s5XsK7YJ1unPu4qEZsG1bRsvmE7F/CCcbUEHBf3+8SrgG6isR6x+Tn6+wWg/oTVOjmMLr6RLQ9w0cD4w9RJdx0rrj6z0cOGgLti2d95ppIsF5N9RWxtoiIRKyqErfN0vRPZEhpqSx13QxpqBiW2hEikmMNBnpae83q4ZQsbO7IJlOi4sBxKAJhvflE0BlLuAYpga47g2+oQe4X9/c0HsitqYC7dG71iidO5Jl/2mT9WyrljPLSYSZQLMZyRxBM41X1XbfM4nFWObEfnnyP2SaC4Qof+1K670wYlA+0nNsS/gd2fIlcz+H0SqdGhaiUWxwbLagcEhOd6trgVrz87c/zx29ZgoLRji12wPeXthrB3YMEJ2BLaJljimJVyBfw7Ip1GCoxpO+CABYz8+f3vIuKy/RYsokcams9StmtV7dZNqf5djIRTW5RI=
+  file:
+    - build/libmojoshader.*
+    - buildwin/libmojoshader.*
+  on:
+    repo: infinitespace-studios/MojoShader
