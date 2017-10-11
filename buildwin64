@@ -6,7 +6,7 @@ $mxedir/usr/bin/$target-cmake -DCMAKE_CXX_FLAGS="-fpermissive" ..
 make
 cp libmojoshader.dll ../build/libmojoshader_32.dll
 rm -Rf *
-target=x86_64-w64-mingw32.static
+target=x86-64-w64-mingw32.static
 $mxedir/usr/bin/$target-cmake -DCMAKE_CXX_FLAGS="-fpermissive" ..
 make
 cp libmojoshader.dll ../build/libmojoshader_64.dll
